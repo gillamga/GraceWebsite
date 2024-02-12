@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter</title>
+    <script>effectson = true;</script>
+    <script src="starCursor2.js" type="text/javascript" charset="UTF-8" ></script>
+
+    <style>
+        html{
+            cursor: url('Layer 2.png'), pointer;
+        }
+        body{
+            background-color: #000000;
+            font-family: Consolas, Lucida Console,system-ui;
+            color: #00e600;
+            font-size: 20px;
+            /*cursor: url('Layer 1.png'), pointer;
+            height: 100%;*/
+
+        }
+        #cursor{
+            animation: blink 1s linear infinite;
+        }
+        @keyframes blink{
+            0%{
+                opacity: 100%
+            }
+            49%{
+                opacity: 100%
+            }
+            50%{
+                opacity: 0%
+            }
+            99%{
+                opacity: 0%
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div>
+
+    <script>
+        window.addEventListener("keydown", (event) => {
+            if(event.keyCode === 13){
+                window.location.href = 'GracePage1.html';
+            }
+        })
+    </script>
+
+    <p>Microsoft Windows [Version 10.0.22621.3007]<br/>(c) Microsoft Corporation. All rights reserved.</p>
+    <p>C:\Users\grace><span id="Typeout"></span><span id="cursor">|</span></p>
+    <script>
+        function pause(ms){
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+        let sleeptime = 70;
+        const phrase = "explorer \"https://gracegillam.com/GraceHomepage\" ::press enter to continue"
+        const textout = document.getElementById("Typeout");
+        const write = async() =>
+        {
+            var unwritten = Boolean(true);
+            await pause(2000);
+            while (unwritten) {
+                for (let i = 0; i < phrase.length; i++) {
+                    textout.innerText = phrase.substring(0, i + 1);
+                    await pause(sleeptime);
+                }
+                unwritten = false;
+            }
+        }
+        write();
+    </script>
+
+</div>
+
+</body>
+</html>
