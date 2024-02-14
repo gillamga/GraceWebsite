@@ -36,6 +36,24 @@
                 opacity: 0%
             }
         }
+        a{
+            color: #00e600;
+            text-decoration: none;
+        }
+        #mobileredirect{
+            animation: fadeIn 8600ms;
+        }
+        @keyframes fadeIn{
+            0%{
+                opacity: 0%;
+            }
+            99%{
+                opacity: 0%;
+            }
+            100%{
+                opacity: 100%;
+            }
+        }
     </style>
 
 </head>
@@ -45,7 +63,7 @@
     <script>
         window.addEventListener("keydown", (event) => {
             if(event.keyCode === 13){
-                window.location.href = 'GracePage1.html';
+                window.location.href = 'GraceHomepage.html';
             }
         })
     </script>
@@ -73,6 +91,8 @@
         }
         write();
     </script>
+
+    <p><span id="mobileredirect"><a href = 'GraceHomepage.html'>Or click here for mobile</a></span></p>
 
 </div>
 
