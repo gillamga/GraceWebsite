@@ -103,7 +103,9 @@ function changeEffects(){
                 "pointerEvents": "none",
                 "z-index": "10000000",
                 "fontSize": "16px",
-                "will-change": "transform"
+                "will-change": "transform",
+                "top": "0",
+                "left": "0"
             };
 
             // Init, and set properties
@@ -114,7 +116,7 @@ function changeEffects(){
                     y: 1
                 };
 
-                this.position = {x: x - 4, y: y - 330};
+                this.position = {x: x, y: y};
 
                 this.element = document.createElement('span');
                 this.element.innerHTML = character;
