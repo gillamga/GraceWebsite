@@ -51,11 +51,12 @@ function changeEffects(){
             if(effectsOn) {
                 cursor.x = e.pageX;
                 cursor.y = e.pageY;
-
+                /**
                 document.getElementById("clientLoc").innerText = "Client Loc -  x: " + e.clientX + " | y: " + e.clientY;
                 document.getElementById("pageLoc").innerText = "Page Loc -  x: " + e.pageX + " | y: " + e.pageY;
                 document.getElementById("offsetLoc").innerText = "Offset Loc -  x: " + e.offsetX + " | y: " + e.offsetY;
                 document.getElementById("screenLoc").innerText = "Screen Loc -  x: " + e.screenX + " | y: " + e.screenY;
+                    */
 
 
                 addParticle(cursor.x, cursor.y, possibleEmoji[Math.floor(Math.random() * possibleEmoji.length)]);

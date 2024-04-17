@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos</title>
+    <script>effectson = true;</script>
+    <script src="starCursor2.js" type="text/javascript" charset="UTF-8" ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+<style>
+    html {
+        cursor: url('Layer 4.png'), pointer;
+    }
+    body {
+        background-color: #02322e;
+        font-family: Consolas, Lucida Console, JetBrains Mono, system-ui;
+        color: #ee0066;
+        /*cursor: url('Layer 1.png'), pointer;
+        height: 100%;*/
+        opacity: 0;
+        transition: opacity 1s;
+        overscroll-behavior: none;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    #bgi{
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .navbar {
+        overflow: hidden;
+        margin-bottom: 0;
+        background-color: #02322e;
+    }
+    .navbar a {
+        float: left;
+        color: #f72644;
+        text-align: center;
+        padding: 10px 13px;
+        font-size: 20px;
+    }
+    .button1 {
+        cursor: url('Layer 4.png'), pointer;
+        background-color: #02322e;
+        top: 5%;
+        left: 13px;
+        position: absolute;
+        font-family: Consolas, Lucida Console, system-ui;
+        font-size: 17px;
+        color: #ff4d00;
+    }
+    .header {
+        text-align: center;
+        font-size: 45px;
+        color: #ee0066;
+    }
+    .description1{
+          width: 1000px;
+          height: 30px;
+          margin: 10px auto;
+          text-align: center;
+          position: relative;
+          right: 400px;
+          font-size: 30px;
+          color: #0ae2a9;
+    }
+    .dvProject{
+        text-align: center;
+        color: #ee9506;
+        cursor: url('Layer 4.png'), pointer;
+    }
+    a{
+        color: #ee9506;
+    }
+
+</style>
+</head>
+<body onload="document.body.style.opacity='1'">
+<div class="navbar">
+    <a href='GraceHomepage.html'>Home</a>
+    <!--<a>Research</a>-->
+    <a href='Blog.html'>Blog</a>
+    <a href='Photos.html'>Photos</a>
+    <!--<a>Essays</a>-->
+    <!--<a>Interest Archive</a>-->
+</div>
+<button onclick="textChange()" id="starToggleButton" value="turnOff" class="button1">Remove the star trail please :(</button>
+<script>
+    function textChange(){
+        var button = document.getElementById("starToggleButton");
+        if (button.value==="turnOff"){
+            button.value="turnOn";
+            button.innerHTML="Bring the star trail back :)";
+        }
+        else{
+            button.value="turnOff";
+            button.innerHTML="Remove the star trail please :("
+        }
+
+    }
+</script>
+<div class="header">
+    <h1><b>Photography and Artwork</b></h1>
+</div>
+<div class="description1">
+    <b>2021 - MLWGS Digital Video Senior Project</b>
+</div>
+<div class="dvProject">
+    <iframe src="https://player.vimeo.com/video/564247714?h=2d83f99ef6" width="1500" height="844" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <p><a href="https://vimeo.com/564247714">Shadowless</a> from <a href="https://vimeo.com/user19024770">Maggie L. Walker Digital Video</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+</div>
+
+
+</body>
+</html>
