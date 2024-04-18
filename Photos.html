@@ -99,6 +99,42 @@
         color: #0ae2a9;
     }
 
+
+    /*MOBILE SUPPORT*/
+    @media (max-width: 800px) {
+        .navbar {
+            padding-bottom: 10px; /* Add padding to the bottom of the navbar */
+        }
+        .button1 {
+            position: static; /* Change position to static to follow document flow */
+            display: block; /* Ensure it takes full width available and centers */
+            margin: 10px auto; /* Add top and bottom margin for spacing */
+            width: 90%; /* Adjust width to less than 100% for aesthetic spacing */
+        }
+        .container {
+            padding-top: 20px; /* Add padding to the top of the container */
+        }
+        .container, .section, .description1, .header, .Project {
+            width: 100%; /* Full width of the viewport */
+            max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        .header, .description1 {
+            font-size: 16px; /* Smaller font size for mobile */
+            text-align: center; /* Center-align text for better readability */
+            padding: 10px; /* Add padding for spacing */
+        }
+
+        .Project iframe {
+            width: 100%; /* Make iframe responsive */
+            height: auto; /* Adjust height automatically */
+        }
+
+
+    }
+
+
 </style>
 </head>
 <body onload="document.body.style.opacity='1'">
