@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Photos</title>
     <script>effectson = true;</script>
     <script src="starCursor2.js" type="text/javascript" charset="UTF-8" ></script>
@@ -13,7 +14,7 @@
         cursor: url('Layer 4.png'), pointer;
     }
     body {
-        background-color: #02322e;
+        background-color: #011a18;
         font-family: Consolas, Lucida Console, JetBrains Mono, system-ui;
         color: #ee0066;
         /*cursor: url('Layer 1.png'), pointer;
@@ -22,8 +23,7 @@
         transition: opacity 1s;
         overscroll-behavior: none;
         overflow-x: hidden;
-        margin: 0;
-        padding: 0;
+
     }
     #bgi{
         width: 100%;
@@ -37,8 +37,7 @@
     }
     .navbar {
         overflow: hidden;
-        margin-bottom: 0;
-        background-color: #02322e;
+        background-color: #011a18;
     }
     .navbar a {
         float: left;
@@ -49,7 +48,7 @@
     }
     .button1 {
         cursor: url('Layer 4.png'), pointer;
-        background-color: #02322e;
+        background-color: #011a18;
         top: 5%;
         left: 13px;
         position: absolute;
@@ -57,25 +56,44 @@
         font-size: 17px;
         color: #ff4d00;
     }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: stretch;
+        justify-content: space-between;
+    }
+    .section{
+        width: 1500px;
+    }
     .header {
+        flex: 0 1 auto;
         text-align: center;
         font-size: 45px;
         color: #0ae2a9;
+        width: 1500px;
     }
     .description1{
-          width: 1000px;
-          height: 30px;
-          margin: 10px auto;
-          text-align: center;
-          position: relative;
-          right: 400px;
-          font-size: 30px;
-          color: #0ae2a9;
+        flex: 0 1 auto;
+        margin: 10px auto;
+        text-align: left;
+        font-size: 30px;
+        color: #0ae2a9;
+        font-family: Consolas, Lucida Console, system-ui;
+        background-color: #011a18;
+        border-color: #0ae2a9;
+        cursor: url('Layer 3.png'), pointer;
+        width: 1500px
     }
-    .dvProject{
+    .Project{
+        flex: 0 1 auto;
         text-align: center;
         color: #0ae2a9;
         cursor: url('Layer 4.png'), pointer;
+        display: none;
+        background-color: #011a18;
+        width: 1500px;
+        overflow: hidden;
     }
     a{
         color: #0ae2a9;
@@ -107,17 +125,36 @@
 
     }
 </script>
-<div class="header">
-    <h1><b>Photography and Artwork</b></h1>
+<div class="container">
+    <div class="section">
+    <div class="header">
+        <h1><b>Photography and Artwork</b></h1>
+    </div>
+    <button type="button" class="description1">2021 - MLWGS Digital Video Senior Project</button>
+    <div class="Project">
+        <iframe src="https://player.vimeo.com/video/564247714?h=2d83f99ef6" width="1500" height="844" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <p><a href="https://vimeo.com/564247714">Shadowless</a> from <a href="https://vimeo.com/user19024770">Maggie L. Walker Digital Video</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+    </div>
+        <button type="button" class="description1">2022 - Final Homage to Montpelier</button>
+        <div class="Project">
+            <p>Oops, still working on this photo gallery!</p>
+        </div>
+    </div>
 </div>
-<div class="description1">
-    <b>2021 - MLWGS Digital Video Senior Project</b>
-</div>
-<div class="dvProject">
-    <iframe src="https://player.vimeo.com/video/564247714?h=2d83f99ef6" width="1500" height="844" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-    <p><a href="https://vimeo.com/564247714">Shadowless</a> from <a href="https://vimeo.com/user19024770">Maggie L. Walker Digital Video</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-</div>
+<script>
+   var buttons = document.querySelectorAll('.description1');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var content = this.nextElementSibling;
 
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
