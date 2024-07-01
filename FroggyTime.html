@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FroggyTime</title>
+    <script>effectson = true;</script>
+    <script src="starCursor2.js" type="text/javascript" charset="UTF-8" ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <style>
+        html{
+            cursor: url('Layer 2.png'), pointer;
+        }
+        body{
+            background-color: #000000;
+            background-image: url('Rainforest.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: top center;
+            overflow-y: auto;
+            width: 100%;
+
+            font-family: Consolas, Lucida Console, JetBrains Mono, system-ui;
+            color: #e6006f;
+            /*cursor: url('Layer 1.png'), pointer;
+            height: 100%;*/
+            opacity: 0;
+            transition: opacity 1s;
+            overscroll-behavior: none;
+
+        }
+        .froggynavbar{
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10%;
+            font-size: 2vw;
+            text-align: center;
+            z-index: 1;
+        }
+        .froggynavbar a{
+            color: #f90078;
+            text-align: center;
+            padding: 10px 13px;
+            font-size: 1.25vw;
+        }
+        .page-content{
+            color: #000000;
+            grid-row: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2vw; /* Responsive font size */
+            text-align: center;
+            z-index: 1;
+        }
+        .button1 {
+            cursor: url('Layer 2.png'), pointer;
+            background-color: #1ad479;
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1;
+            font-family: Consolas, Lucida Console, system-ui;
+            font-size: 1vw;
+            color: #034a3f;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<body onload="document.body.style.opacity='1'">
+<div class="froggynavbar">
+    <a href='GraceHomepage.html'>Home</a>
+    <!--<text>Research</text>-->
+    <a href='Blog.html'>Blog</a>
+    <a href='FroggyTime.html'>Froggy Time</a>
+    <a href='Photos.html'>Photos</a>
+    <!--<text>Essays</text>-->
+    <!--<text>Interest Archive</text>-->
+</div>
+<button onclick="textChange()" id="starToggleButton" value="turnOff" class="button1">Remove the star trail please :(</button>
+<script>
+    function textChange(){
+        var button = document.getElementById("starToggleButton");
+        if (button.value==="turnOff"){
+            button.value="turnOn";
+            button.innerHTML="Bring the star trail back :)";
+        }
+        else{
+            button.value="turnOff";
+            button.innerHTML="Remove the star trail please :("
+        }
+
+    }
+</script>
+<div class="page-content">
+    This is what my brain cooked up guys
+</div>
+
+
+</html>

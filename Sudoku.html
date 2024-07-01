@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+    <script>effectson = true;</script>
+    <script src="starCursor2.js" type="text/javascript" charset="UTF-8" ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+    <style>
+        html{
+            cursor: url('Layer 4.png'), pointer;
+        }
+        body{
+            background-color: #e5c4dd;
+            font-family: Consolas, Lucida Console, JetBrains Mono, system-ui;
+            color: #6a013f;
+            /*cursor: url('Layer 1.png'), pointer;
+            height: 100%;*/
+            opacity: 0;
+            transition: opacity 1s;
+            overscroll-behavior: none;
+
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #e5c4dd;
+        }
+        .navbar a {
+            float: left;
+            color: #eb1a95;
+            text-align: center;
+            padding: 10px 13px;
+            font-size: 20px;
+        }
+        .button1 {
+            cursor: url('Layer 4.png'), pointer;
+            background-color: #fee9f9;
+            top: 5%;
+            left: 13px;
+            position: absolute;
+            font-family: Consolas, Lucida Console, system-ui;
+            font-size: 17px;
+            color: #eb1a95;
+            width: 310px;
+        }
+        .button2 {
+            cursor: url("Layer 4.png"), pointer;
+            background-color: #fee9f9;
+            top: 5%;
+            right: 13px;
+            position: absolute;
+            font-family: Consolas, Lucida Console, JetBrains Mono, system-ui;
+            font-size: 17px;
+            color: #eb1a95;
+            width: 310px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: stretch;
+            justify-content: space-between;
+        }
+        .section{
+            width: 1500px;
+        }
+        .header {
+            flex: 0 1 auto;
+            text-align: center;
+            font-size: 45px;
+            color: #6a013f;
+            width: 1500px;
+        }
+        a{
+            color: #6a013f;
+        }
+
+
+        .dailyContainer{
+            position: absolute;
+            top: 8%;
+            left: 13px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: stretch;
+            justify-content: flex-start;
+            background-color: #fee9f9;
+
+        }
+        .dailySection{
+            width: 310px;
+        }
+        .dailyHeader{
+            cursor: url("Layer 4.png"), pointer;
+            width: 310px;
+            font-family: Consolas, Lucida Console, system-ui;
+            background-color: #fee9f9;
+            color: #6a013f;
+            text-align: center;
+
+        }
+        .dailyGame{
+            flex: 0 1 auto;
+            margin: auto;
+            text-align: left;
+            font-size: 17px;
+            background-color: #e5c4dd;
+            color: #6a013f;
+            border: hidden;
+            cursor: url("Layer 4.png"), pointer;
+            width: 310px;
+            font-family: Consolas, Lucida Console, JetBrains Mono, system-ui;
+        }
+        .references{
+            flex: 0 1 auto;
+            margin: auto;
+            text-align: left;
+            font-size: 13px;
+            background-color: #e5c4dd;
+            color: #6a013f;
+            border: hidden;
+            cursor: url("Layer 4.png"), pointer;
+            width: 310px;
+            font-family: Consolas, Lucida Console, JetBrains Mono, system-ui
+        }
+
+
+        .leaderboardContainer{
+            position: absolute;
+            top: 8%;
+            right: 13px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: stretch;
+            justify-content: flex-start;
+            background-color:#fee9f9;
+        }
+        .leaderboardSection{
+            width: 310px;
+        }
+        .leaderboardHeader{
+            cursor: url("Layer 4.png"), pointer;
+            width: 310px;
+            font-family: Consolas, Lucida Console, JetBrains Mono, system-ui;
+            background-color: #fee9f9;
+            color: #6a013f;
+            text-align: center;
+        }
+
+
+        .sudokuContainer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sudokuGrid{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background-color: #6a013f;
+            grid-gap: 15px;
+            padding: 15px;
+            width: 750px;
+            height: 750px;
+        }
+        .outerGridCell {
+            background-color: #6a013f;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            height: 100%;
+            width: 100%;
+            justify-items: center;
+        }
+        .innerGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background-color: #6a013f;
+            aspect-ratio: 1/1;
+            width: 100%;
+        }
+        .innerGridCell {
+            text-align: center;
+            font-size: 45px;
+            background-color: #feeeee;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+        }
+        .candidateGrid{
+            display: grid;
+            position: absolute;
+            background-color: #feeeee;
+            grid-template-columns: repeat(27, 1fr);
+            width: 750px;
+            height: 750px;
+            border: 1px solid blue;
+        }
+        .candidateCell{
+            text-align: center;
+            font-size: 4px;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+        }
+
+
+    </style>
+
+</head>
+<body onload="document.body.style.opacity='1'">
+<div class="navbar">
+    <a href='GraceHomepage.html'>Home</a>
+    <!--<a>Research</a>-->
+    <a href='Blog.html'>Blog</a>
+    <a href='FroggyTime.html'>Froggy Time</a>
+    <a href='Photos.html'>Photos</a>
+    <!--<a>Essays</a>-->
+    <!--<a>Interest Archive</a>-->
+</div>
+
+
+<button onclick="textChange()" id="starToggleButton" value="turnOff" class="button1">Remove the star trail please :(</button>
+<script>
+    function textChange(){
+        var button = document.getElementById("starToggleButton");
+        if (button.value==="turnOff"){
+            button.value="turnOn";
+            button.innerHTML="Bring the star trail back :)";
+        }
+        else{
+            button.value="turnOff";
+            button.innerHTML="Remove the star trail please :("
+        }
+
+    }
+</script>
+
+<button onclick="textChange2()" id="ThemeToggleButton" value="LightMode" class="button2">Dark Theme</button>
+<script>
+    function textChange2(){
+        var button = document.getElementById("ThemeToggleButton");
+        if (button.value==="LightMode") {
+            button.value = "DarkMode";
+            button.innerHTML = "Light Theme"
+        }
+        else {
+            button.value = "LightMode";
+            button.innerHTML = "Dark Theme"
+        }
+    }
+</script>
+
+<div class="container">
+    <div class="section">
+        <div class="header"><h1><b>Sudoku</b></h1></div>
+    </div>
+</div>
+
+<div class="dailyContainer">
+    <div class="dailySection">
+        <div class="dailyHeader">Daily Sudoku Games</div>
+        <button type="button" class="dailyGame">Sudoku 1</button>
+        <button type="button" class="dailyGame">Sudoku 2<br></br></br></button>
+    </div>
+    <div class="dailySection">
+        <div class="dailyHeader">Algorithm References</div>
+        <div class="dailyHeader" style="background-color: #e5c4dd; text-align: left; color: #664202">
+            <button type="button" class="references"><a href="https://link.springer.com/chapter/10.1007/978-3-642-21524-7_52">
+                Meng, J., & Lu, X. (2011). The design of the algorithm of creating Sudoku Puzzle. <i>Lecture Notes in Computer Science</i>, 427–433. https://doi.org/10.1007/978-3-642-21524-7_52
+            </a></button>
+            <button type="button" class="references"><a href="https://www.sudokuwiki.org/Sudoku_Creation_and_Grading.pdf">
+                Stuart, A. C. (2023, January). <i>Sudoku Creation and Grading.</i> Sudoku Wiki. https://www.sudokuwiki.org/Sudoku_ Creation_and_Grading.pdf
+            </a></button>
+        </div>
+    </div>
+    <div class="dailyHeader" style="background-color: #e5c4dd; text-align: left">
+        </br>
+        This interface was inspired by the NYT Games sudoku interface, which I am quite a fan of.
+        You can check out the algorithm for the puzzle generation on my GitHub and see
+        the references that I used for the generator above.
+    </div>
+</div>
+
+<div class="leaderboardContainer">
+    <div class="leaderboardSection">
+        <div class="leaderboardHeader">Leaderboard and account functionality coming soon</div>
+    </div>
+</div>
+
+<div class="sudokuContainer">
+    <div class="sudokuGrid">
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell">1</div>
+                <div class="innerGridCell">2</div>
+                <div class="innerGridCell">3</div>
+                <div class="innerGridCell">4</div>
+                <div class="innerGridCell">5</div>
+                <div class="innerGridCell">6</div>
+                <div class="innerGridCell">7</div>
+                <div class="innerGridCell">8</div>
+                <div class="innerGridCell">9</div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+
+        <div class="outerGridCell">
+            <div class="innerGrid">
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+                <div class="innerGridCell"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
