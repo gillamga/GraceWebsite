@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+    <style>
+        html{
+            cursor: url('../../Assets/Cursors/Layer 2.png'), pointer;
+        }
+        body{
+            background-color: #000000;
+            font-family: Consolas, Lucida Console, Jetbrains Mono, system-ui;
+            color: #00e600;
+            font-size: 20px;
+            /*cursor: url('Layer 1.png'), pointer;
+            height: 100%;*/
+
+        }
+        #cursor{
+            animation: blink 1s linear infinite;
+        }
+        @keyframes blink{
+            0%{
+                opacity: 100%
+            }
+            49%{
+                opacity: 100%
+            }
+            50%{
+                opacity: 0%
+            }
+            99%{
+                opacity: 0%
+            }
+        }
+        a{
+            color: #00e600;
+            text-decoration: none;
+        }
+        #mobileredirect{
+            animation: fadeIn 8600ms;
+        }
+        @keyframes fadeIn{
+            0%{
+                opacity: 0%;
+            }
+            99%{
+                opacity: 0%;
+            }
+            100%{
+                opacity: 100%;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div>
+
+    <script>
+        window.addEventListener("keydown", (event) => {
+            if(event.keyCode === 13){
+                window.location.href = 'GraceHomepage.html';
+            }
+        })
+    </script>
+
+    <p>Microsoft Windows [Version 10.0.22621.3007]<br/>(c) Microsoft Corporation. All rights reserved.</p>
+    <p>C:\Users\grace><span id="Typeout"></span><span id="cursor">|</span></p>
+    <script>
+        function pause(ms){
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+        let sleeptime = 70;
+        const phrase = "explorer \"https://gracegillam.com/GraceHomepage\" ::press enter to continue"
+        const textout = document.getElementById("Typeout");
+        const write = async() =>
+        {
+            var unwritten = Boolean(true);
+            await pause(2000);
+            while (unwritten) {
+                for (let i = 0; i < phrase.length; i++) {
+                    textout.innerText = phrase.substring(0, i + 1);
+                    await pause(sleeptime);
+                }
+                unwritten = false;
+            }
+        }
+        write();
+    </script>
+
+    <p><span id="mobileredirect"><a href = '../GraceHomepage.html'>Or click here for mobile</a></span></p>
+
+</div>
+
+</body>
+</html>

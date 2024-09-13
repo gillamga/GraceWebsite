@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FroggyTime</title>
     <script>effectson = true;</script>
-    <script src="starCursor2.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../../Scripts/starCursor2.js" type="text/javascript" charset="UTF-8"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
     <style>
         html {
-            cursor: url('Cursors/FrogLayer.png'), pointer;
+            cursor: url('../../Assets/Cursors/FrogLayer.png'), pointer;
         }
         body {
             background-color: #000000;
-            background-image: url('Rainforest.png');
+            background-image: url('../../Assets/Rainforest.png');
             background-size: 100% auto;
             background-repeat: no-repeat;
             background-attachment: scroll;
@@ -51,7 +51,7 @@
             position: relative;
         }
         .button1 {
-            cursor: url('Cursors/Layer 2.png'), pointer;
+            cursor: url('../../Assets/Cursors/Layer 2.png'), pointer;
             background-color: #1ad479;
             display: flex;
             margin: 0 auto;
@@ -65,7 +65,7 @@
             position: relative;
         }
         .button2 {
-            cursor: url('Cursors/Layer 2.png'), pointer;
+            cursor: url('../../Assets/Cursors/Layer 2.png'), pointer;
             background-color: #c81ad4;
             display: flex;
             margin: 0 auto;
@@ -89,10 +89,10 @@
     </style>
 </head>
 <body onload="document.body.style.opacity='1'">
-<img src="FrogGifs/FroggyTimeHeader.gif" class="header-gif" alt="FroggyTime-Header">
+<img src="../../Assets/FrogGifs/FroggyTimeHeader.gif" class="header-gif" alt="FroggyTime-Header">
 
 <div class="button-container">
-<button id="returnButton" class="button2"><a href='Blog.html'>Take Me Back NOW!!!</a></button>
+<button id="returnButton" class="button2"><a href='../Blog.html'>Take Me Back NOW!!!</a></button>
     <br>
 <button onclick="textChange()" id="starToggleButton" value="turnOff" class="button1">Remove the star trail please :(</button>
 <script>
